@@ -52,101 +52,86 @@
 	<body>
 		
 	<div class="gtco-loader"></div>
-	
-	<div id="page">
-	<nav class="gtco-nav" role="navigation">
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-xs-2">
-					<div id="gtco-logo"><a href="index.html">JoT Official.</a></div>
-				</div>
-				<div class="col-xs-8 text-center menu-1">
-					<ul>
-						<li class="active"><a th:href="@{/index}">Home</a></li>
-						<li><a href="about.html">About</a></li>
-				
-						<li class="has-dropdown">
-							<a href="#">Shop</a>
-							<ul class="dropdown">
-								<li><a href="shop.html">All</a></li>
-								<li><a href="#">Bottoms</a></li>
-								<li><a href="#">Shirts</a></li>
-								<li><a href="#">Denim</a></li>
-							</ul>
-						</li>
-						<li><a href="contact.html">Contact</a></li>
-						<li>
-							<a href="#" id="cart"><i class="icon-shopping-cart"></i> Cart <span class="badge">3</span></a>
-						</li>
-					</ul>
-				</div>
-				
-				<div class="col-xs-2 text-right hidden-xs menu-2">
-					<ul>
-						<li class="btn-cta"><a href="#"><span>Login</span></a></li>
-					</ul>
-				</div>
-				
-				<div style="display: inline-block;position: absolute;right: 11%;" class="search">
-					<form action="detail.html" id="demo-2">
-						<input type="search" placeholder="Search" />
-					</form>
-				</div>
-			</div>
-			
-		</div>
-	</nav>
 
-	<header id="gtco-header" class="gtco-cover" role="banner" style="background-image:url(/images/slideshow_2.jpg);">
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t">
-						<div class="display-tc animate-box" data-animate-effect="fadeIn">
-							<h1>New In Denim</h1>
-							<p><a href="#" class="btn btn-default">Shop Now</a></p>
+		<div id="page">
+			<nav class="gtco-nav" role="navigation">
+				<div class="gtco-container">
+					<div class="row">
+						<div class="col-xs-2">
+							<div id="gtco-logo"><a id="logo-page-shop" href="index.html">JoT Official.</a></div>
+						</div>
+						<div class="col-xs-8 text-center menu-1">
+							<ul class="menu-shop">
+								<li class="active"><a th:href="@{/}">Home</a></li>
+								<li><a href="about.html">About</a></li>
+
+								<li class="has-dropdown">
+									<a href="#">Shop</a>
+									<ul class="dropdown">
+										<li><a href="#">All</a></li>
+										<li><a href="#">Bottoms</a></li>
+										<li><a href="#">Shirts</a></li>
+										<li><a href="#">Denim</a></li>
+									</ul>
+								</li>
+								<li><a href="contact.html">Contact</a></li>
+								<li>
+									<a href="#" id="cart"><i class="icon-shopping-cart"></i> Cart <span class="badge">3</span></a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xs-2 text-right hidden-xs menu-2">
+							<ul>
+								<li class="btn-cta-shop"><a href="#"><span>Login</span></a></li>
+							</ul>
+						</div>
+
+						<div style="display: inline-block;position: absolute;right: 11%;" class="search">
+							<form action="detail.html" id="demo-2">
+								<input type="search" placeholder="Search" />
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</nav>
+
+			<header id="gtco-header" class="gtco-cover-shop" role="banner" style="background-image:url(../images/header2.jpg);">
+				<div class="gtco-container">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 text-center">
+
+						</div>
+					</div>
+				</div>
+			</header>
+
+			<div class="gtco-section">
+				<div class="gtco-container">
+					<div class="row animate-box">
+						<div class="col-md-8 col-md-offset-2 text-center gtco-heading gtco-heading-sm">
+							<h2>Our Product</h2>
+						</div>
+					</div>
+					<div class="row animate-box" th:object="${detailProduct}">
+						<div class="col-md-6">
+							<img style="width:485px;height:485px" src="/images/Basicdenim_Indigo1.jpg" />
+							<img style="width:485px;height:485px" src="/images/Basicdenim_Indigo1.jpg" />
+						</div>
+						<div class="col-md-6">
+							<p th:text="*{description}"></p>
+							<p class="price" th:text="*{price}"></p>
+							<div class="dropdown-size">
+								<select class="dropdown-select">
+									<option>28</option>
+									<option>30</option>
+								</select>
+							</div>
+							<p><a href="#" class="btn btn-primary">Add to Cart</a></p>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</header>
-	
-	<div id="gtco-features">
-		<div class="gtco-container">
-			<div class="row">
-				<div class="col-md-4 col-sm-4" th:each="product:${products}">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<img style="width:300px;height:300px" src="/images/Basicdenim_Indigo1.jpg" />
-						</span>
-						<h3 th:text="*{product.getName()}"></h3>
-						<p th:text="*{product.getDescription()}"></p>
-						<p><a th:href="@{/products/{id}(id=*{product.getId()})}" class="btn btn-primary">View More</a></p>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-	<div class="slideshow">
-		<ul id="slider">
-			<li>
-				<a href="">
-					<img src="/images/slideshow_1.jpg"/>
-				</a>
-			</li>
-			<li>
-				<a href="">
-					<img src="/images/slideshow_2.jpg" />
-				</a>
-			</li>
-		</ul>
-		<script src="/js/slide.js"></script>
-	</div>
-
-
-
 	<div id="gtco-started">
 		<div class="gtco-container">
 			<div class="row animate-box">

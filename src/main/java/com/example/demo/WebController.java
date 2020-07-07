@@ -14,20 +14,22 @@ public class WebController {
 
     @GetMapping("/")
     public String index(Model model){
-        products.add(new Product("Wash Denim",550000,"98% cotton & 2% spandex"));
-        products.add(new Product("Denim Jacket",600000,"100% denim handle by hands"));
-        products.add(new Product("Long Sleeve Tee",750000,"98% cotton & 2% spandex"));
+        products.add(new Product(1,"Wash Denim",550000,"98% cotton & 2% spandex"));
+        products.add(new Product(2,"Denim Jacket",600000,"100% denim handle by hands"));
+        products.add(new Product(3,"Long Sleeve Tee",750000,"98% cotton & 2% spandex"));
         model.addAttribute("products",products);
         return "index";
     }
 
-    @GetMapping("/products")
-    public String listProduct(Model model){
-        products.add(new Product("Wash Denim",550000,"98% cotton & 2% spandex"));
-        products.add(new Product("Denim Jacket",600000,"100% denim handle by hands"));
-        products.add(new Product("Wash Denim",750000,"98% cotton & 2% spandex"));
-        model.addAttribute("products",products);
-        return "listProduct";
+    @GetMapping("/products/{productId}")
+    public String detailProduct(@PathVariable(name = "productId") Integer id, Model model){
+        for(int i = 0 ; i < products.size(); i++){
+            if(products.get(i).getId() == id){
+                System.out.println(products.get(i).getName());
+                model.addAttribute("detailProduct",products.get(i));
+            }
+        }
+        return "detail";
     }
 
     @PostMapping("/addContact")
